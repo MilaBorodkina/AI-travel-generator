@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Axios Import -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <!-- Typewriter Import -->
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <!-- Google Fonts Import -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,24 +21,99 @@
   <body>
     <div class="container">
       <header>
-        <h1>Find Your Destination</h1>
+        <h1>Destination Explorer</h1>
       </header>
       <main>
-        <form>
+        <form id="generator-form">
+          <select id="budget" required>
+            <option value="">Choose an budget</option>
+            <option value="affordable">💲Affordable</option>
+            <option value="moderate">💰Moderate</option>
+            <option value="expensive">🤑Expensive</option>
+          </select>
+          <select id="temperature">
+            <option value="">Choose a temperature in destination</option>
+            <option value="cold">❄️Cold</option>
+            <option value="mild">⛅Mild</option>
+            <option value="wirm">☀️Warm</option>
+          </select>
+          <select id="with">
+            <option value="">Who are you traveling with?</option>
+            <option value="alone">🚶 Alone</option>
+            <option value="friends">🧑‍🤝‍🧑 Friends</option>
+            <option value="partner">❤️ Partner</option>
+            <option value="relatives">🧑 Relatives</option>
+            <option value="kids">👶 Kids</option>
+          </select>
+          <ul class="checkbox"> 
+          <li>
+          <input
+            type="checkbox"
+            id="requirement1"
+            name="requirement"
+            value="beaches"
+          />
+          <label for="requirement1">🏖️ Beaches</label><br />
+          </li>
+          <li>
+          <input
+            type="checkbox"
+            id="requirement2"
+            name="requirement"
+            value="diving"
+          />
+          <label for="requirement2">🤿 Diving</label><br />
+          </li>
+          <li>
+          <input
+            type="checkbox"
+            id="requirement3"
+            name="requirement"
+            value="hiking"
+          />
+          <label for="requirement3">🚶‍♀️ Hiking</label>
+          </li>
+          <li>
+          <input
+            type="checkbox"
+            id="requirement4"
+            name="requirement"
+            value="museums"
+          />
+          <label for="requirement4">🎨 Museums</label>
+          </li>
+          <li>
+          <input
+            type="checkbox"
+            id="requirement5"
+            name="requirement"
+            value="shopping"
+          />
+          <label for="requirement5">🛒 Shopping</label>
+          </li>
+          <li>
+          <input
+            type="checkbox"
+            id="requirement6"
+            name="requirement"
+            value="nightlife"
+          />
+          <label for="requirement6">💃 Nightlife</label>
+          </li>
+          </ul>
+          <div class="form-container">
           <input
             type="text"
             placeholder="What are you looking for in your trip?"
-            required
             autocomplete="off"
             class="instructions"
+            id="userText"
           />
           <input type="submit" class="submit-button" />
         </form>
-        <div class="result">
-          The info will go here
-          <br />
-          The info will go here
+        <div class="hint">Try keywords like 'mountain', 'city' or 'adventure' to find your perfect destination!</div>
         </div>
+        <div class="result hidden" id="result"></div>
       </main>
       <footer>
         <div>
